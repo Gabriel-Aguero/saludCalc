@@ -3,21 +3,135 @@ import Layout from "@src/layouts/Layout.astro";
 ---
 
 <Layout title="Calculadora de Salud">
-  <section class="flex gap-10">
-    <button
-      class="px-10 py-2 bg-gray-400 rounded-md font-medium text-slate-950
-       hover:bg-gray-600 hover:text-white hover:transition-all
-         hover:ease-in-out hvoer:duration-1000 cursor-pointer"
-    >
-      Calculo de magnesio
-    </button>
+  <section class="flex flex-col gap-10">
+    <div class="flex-1">
+      <button
+        id="btn-magnesio"
+        class="px-10 py-2 bg-gray-400 rounded-md font-medium text-slate-950
+         hover:bg-gray-600 hover:text-white hover:transition-all
+           hover:ease-in-out hvoer:duration-1000 cursor-pointer"
+      >
+        Correcciones de magnesio
+      </button>
+  
+      <button
+        id="btn-fosforo"
+        class="px-10 py-2 bg-gray-400 rounded-md font-medium text-slate-950
+      hover:bg-gray-600 hover:text-white hover:transition-all
+      hover:ease-in-out hvoer:duration-1000 cursor-pointer"
+      >
+        Correcciones de Fosforo
+      </button>
+    </div>
 
-    <button
-      class="px-10 py-2 bg-gray-400 rounded-md font-medium text-slate-950
-    hover:bg-gray-600 hover:text-white hover:transition-all
-    hover:ease-in-out hvoer:duration-1000 cursor-pointer"
-    >
-      Calculo de Fosforo
-    </button>
+    <article id ="magnesio-content" class="hidden">
+      <h2>Correcciones de Magnesio</h2>
+      <form action="">        
+        <div class="grid grid-cols-2 gap-4">
+
+          <div class="col-span-2 flex flex-col gap-2">
+            <label 
+              class="text-gray-400 font-medium"
+              for="peso">
+              Peso
+            </label>
+            <input 
+              class="rounded-md border-2 border-gray-400 p-2"
+              type="number" 
+              id="peso" 
+              name="peso" 
+              placeholder="Ingreso el peso del paciente"            
+              >
+          </div>
+          
+          <div class="mt-4 col-span-2 flex flex-col gap-2">
+            <h3 class="text-xl text-red-600 font-medium">
+              La dósis máxima permitida para pediatría es de 16 
+            </h3>            
+          </div>
+
+          <div class="flex flex-col gap-2">            
+            <label 
+              class="text-gray-400 font-medium"
+              for="correccionMagnesio">
+              Correccion a: 
+            </label>
+            <div class="flex gap-2 items-center">
+              <input 
+                class="rounded-md border-2 border-gray-400 p-2"
+                type="number" 
+                id="correccionMagnesio" 
+                name="correccionMagnesio" 
+                placeholder="Ingrese un valor"            
+                >              
+              <label for="">meq/kg</label>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-2 justify-center">
+            <label 
+              class="text-gray-400 font-medium"
+              for="correccionMagnesio">
+              Corresponde a meq/dosis
+            </label>
+            <label 
+              class="py-4 border-2 border-gray-300 rounded-md"
+              for="">
+              <span id="meqDosis"></span>
+            </label>
+          </div>
+
+          <div class="col-span-2 mt-10 flex flex-col gap-2">
+            <h3 class="text-xl text-gray-800 font-medium">
+              Indicaciones Medicas <span>Sulfato de Magnesio</span>
+            </h3>            
+          </div>
+
+          <div class="mt-4 flex flex-col gap-2">
+            <label 
+              class="text-gray-400 font-medium"
+              >
+              Tomar: 
+            </label>
+            <label 
+              class="border-2 py-4 border-gray-400 p-2 rounded-md"
+              >              
+              <span id="indicacionMedica"></span>
+            </label>
+            
+          </div>
+
+        </div>
+      </form>      
+    </article>
+    <article id="fosforo-content" class="hidden">
+      <h2>Correcciones de Fosforo</h2>
+      <p>
+        El fosforo es un elemento de la tabla periódica de los elementos
+        naturales. Es un elemento de la tabla periódica de los elementos
+        naturales. Es un elemento de la tabla periódica de los elementos
+        naturales.
+      </p>      
+    </article>
   </section>
 </Layout>
+
+<script>
+  const magnesioContent = document.getElementById("magnesio-content");
+  const fosforoContent = document.getElementById("fosforo-content");
+  const btnMagnesio = document.getElementById("btn-magnesio");
+  const btnFosforo = document.getElementById("btn-fosforo");
+
+  magnesioContent?.classList.remove("hidden");  
+
+  btnMagnesio?.addEventListener("click", () => {
+    magnesioContent?.classList.remove("hidden");
+    fosforoContent?.classList.add("hidden");
+  });
+
+  btnFosforo?.addEventListener("click", () => {
+    fosforoContent?.classList.remove("hidden");
+    magnesioContent?.classList.add("hidden");
+  });
+
+</script>
