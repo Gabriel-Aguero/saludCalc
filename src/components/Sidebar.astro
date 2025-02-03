@@ -1,0 +1,30 @@
+---
+const menuItems = [
+  { name: "Inicio", slug: "/" },
+  { name: "Drogas Cardiovasculares", slug: "drogas-cardiovasculares" },
+  { name: "Electrolitos", slug: "electrolitos" },
+  { name: "Heparina", slug: "heparina" },
+  { name: "Sedoanalgesia", slug: "sedoanalgesia" },
+  { name: "Insulina", slug: "insulina" },
+];
+---
+
+<aside class="w-64 h-screen bg-gray-100 p-4 shadow-md">
+  <h2 class="text-xl font-bold mb-4">Calculadora de Dosis</h2>
+  <nav>
+    <ul class="space-y-2">
+      {
+        menuItems.map((item) => (
+          <li>
+            <a
+              href={`/${item.slug}`}
+              class="block px-3 py-2 rounded hover:bg-gray-200"
+            >
+              {item.name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</aside>
