@@ -2,7 +2,7 @@
 import Layout from "@src/layouts/Layout.astro";
 ---
 
-<Layout title="Calculadora de Salud">
+<Layout title="Calculadora de Dosis">
   <section class="flex flex-col gap-10">
     <div class="flex-1">
       <button
@@ -27,83 +27,131 @@ import Layout from "@src/layouts/Layout.astro";
     <article id ="magnesio-content" class="hidden">
       <h2>Correcciones de Magnesio</h2>
       <form action="">        
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid gird-cols-1 md:grid-cols-2 gap-4">
 
-          <div class="col-span-2 flex flex-col gap-2">
+          <div class="flex flex-col gap-2 mt-4">
             <label 
               class="text-gray-400 font-medium"
               for="peso">
               Peso
             </label>
-            <input 
-              class="rounded-md border-2 border-gray-400 p-2"
-              type="number" 
-              id="peso" 
-              name="peso" 
-              placeholder="Ingreso el peso del paciente"            
-              >
-          </div>
-          
-          <div class="mt-4 col-span-2 flex flex-col gap-2">
-            <h3 class="text-xl text-red-600 font-medium">
-              La dósis máxima permitida para pediatría es de 16 
-            </h3>            
-          </div>
-
-          <div class="flex flex-col gap-2">            
-            <label 
-              class="text-gray-400 font-medium"
-              for="correccionMagnesio">
-              Correccion a: 
-            </label>
-            <div class="flex gap-2 items-center">
+            <div class="flex flex-col gap-1">
               <input 
                 class="rounded-md border-2 border-gray-400 p-2"
                 type="number" 
-                id="correccionMagnesio" 
-                name="correccionMagnesio" 
-                placeholder="Ingrese un valor"            
-                >              
-              <label for="">meq/kg</label>
+                id="peso" 
+                name="peso" 
+                placeholder="Ingreso el peso del paciente" 
+                required           
+                >
+                <span class="error text-red-500" id="error-message-peso"></span>
+                <span class="px-2 text-gray-700 text-md">Kg</span>
             </div>
+          </div>                    
+
+          <div class="flex flex-col gap-2 mt-2 border-2 rounded-xl border-red-400 p-4">
+            <div class="flex items-center  justify-between gap-2">
+              <h2 class="text-xl text-red-700 font-bold">Dosis Pediátrica Permitida</h2>
+              <p class="text-3xl">⚠️</p>
+            </div>
+            <span class="text-md font-medium text-gray-00 text-pretty">Ampolla 25% de sulfato de magnesio = 2 meq de magnesio/ ml
+            concentración de administración: 0,5 meq de magnesio/ ml            
+            </span>            
+          </div> 
+
+          <div class="flex flex-col gap-2">            
+            <label 
+              class="text-gray-500 font-semibold"
+              for="correccionMagnesio">
+              Correccion a .... meq/kg
+            </label>            
+            <input 
+              class="rounded-md border-2 border-gray-400 p-2"
+              type="number" 
+              id="correccionMagnesio" 
+              name="correccionMagnesio" 
+              placeholder="Ingrese un valor"  
+              required     
+              min="1"    
+              >                                                    
+            <span class="error" id="error-message-magnesio"></span>
           </div>
 
           <div class="flex flex-col gap-2 justify-center">
             <label 
-              class="text-gray-400 font-medium"
+              class="text-gray-500 font-semibold"
               for="correccionMagnesio">
-              Corresponde a meq/dosis
-            </label>
+              Corresponde a .... meq/dosis
+            </label>            
             <label 
-              class="py-4 border-2 border-gray-300 rounded-md"
-              for="">
-              <span id="meqDosis"></span>
+              class="py-2 border-2 border-gray-300 rounded-md"
+              for="meqDosis">
+              <span
+                class="text-gray-600 font-medium px-4"
+                id="meqDosis">0</span>
             </label>
+            <p class="text-md text-red-600 font-medium">
+              La dósis máxima permitida para pediatría es de 16 
+            </p>
           </div>
 
           <div class="col-span-2 mt-10 flex flex-col gap-2">
             <h3 class="text-xl text-gray-800 font-medium">
-              Indicaciones Medicas <span>Sulfato de Magnesio</span>
-            </h3>            
+              <span class="border-b-2 p-1 border-gray-300">Indicaciones Medicas de Sulfato de Magnesio</span>              
+            </h3>             
+            <p class="mt-4 text-md border-2 border-red-400 rounded-md p-2">⚠️ Incompatible con calcio, bicarbonato, Incompatible con fosfatos excepto en soluciones diluidas</p>           
           </div>
-
+          
           <div class="mt-4 flex flex-col gap-2">
             <label 
               class="text-gray-400 font-medium"
               >
               Tomar: 
-            </label>
-            <label 
-              class="border-2 py-4 border-gray-400 p-2 rounded-md"
-              >              
-              <span id="indicacionMedica"></span>
-            </label>
-            
+            </label>            
+            <span class="border-2 border-gray-400 p-2 rounded-md" id="tomar">0</span>                        
+            </label>            
           </div>
+          
+          <div class="flex gap-4">
+            <div class="mt-4 flex flex-col gap-2">                          
+                <label 
+                  class="text-gray-500 font-semibold"
+                  >
+                  Llevar a: .... ml
+                </label>              
+                <span class="border-2 border-gray-400 p-2 rounded-md" id="preparar">0</span>                                
+              </div>
+              <div class="mt-4 flex flex-col gap-2">                          
+                <label 
+                  class="text-gray-500 font-semibold px-2"
+                  >
+                  Preparar con...
+                </label>
+                <select class="border-2 border-gray-400 p-2 rounded-md" id="opcion">
+                  <option value="0" disabled selected>Seleccione una opción</option>
+                  <option value="1">Dextrosa al 5%</option>
+                  <option value="2">Solución fisiológica</option>                  
+                </select>              
+
+              </div>
+          </div>
+
+          <div class="col-span-2 mt-4 flex flex-col gap-2 border-2 rounded-xl border-red-400 p-4">
+            <h4 
+              class="text-gray-600 text-2xl font-bold"
+              >
+              Administar: 💉​
+            </h4>            
+            <p
+             class="py-2 text-2xl text-gray-950 fotn-bold"
+             id="administrar">0</p>            
+          </div>
+
 
         </div>
       </form>      
     </article>
+
     <article id="fosforo-content" class="hidden">
       <h2>Correcciones de Fosforo</h2>
       <p>
@@ -117,10 +165,18 @@ import Layout from "@src/layouts/Layout.astro";
 </Layout>
 
 <script>
-  const magnesioContent = document.getElementById("magnesio-content");
-  const fosforoContent = document.getElementById("fosforo-content");
-  const btnMagnesio = document.getElementById("btn-magnesio");
-  const btnFosforo = document.getElementById("btn-fosforo");
+  const inputPeso = document.getElementById("peso")!;
+  const magnesioContent = document.getElementById("magnesio-content")!;
+  const fosforoContent = document.getElementById("fosforo-content")!;
+  const btnMagnesio = document.getElementById("btn-magnesio")!;
+  const btnFosforo = document.getElementById("btn-fosforo")!;
+  const meqdosis = document.getElementById("meqDosis")!;
+  const inputMagnesio = document.getElementById("correccionMagnesio")!;
+  const errorPeso = document.getElementById("error-message-peso")!;
+  const errorMagnesio = document.getElementById("error-message-magnesio")!;
+  const tomar = document.getElementById("tomar")!;
+  const preparar = document.getElementById("preparar")!;
+  const administrar = document.getElementById("administrar")!;
 
   magnesioContent?.classList.remove("hidden");  
 
@@ -133,5 +189,45 @@ import Layout from "@src/layouts/Layout.astro";
     fosforoContent?.classList.remove("hidden");
     magnesioContent?.classList.add("hidden");
   });
+  
 
+  
+  inputMagnesio?.addEventListener("input", () => {    
+    const valor = parseFloat(inputMagnesio?.value);
+    const peso = parseFloat(inputPeso?.value);
+    
+    if(isNaN(valor) || peso <= 0) {
+      errorPeso.textContent = "Debe ingresar un peso";
+      meqdosis.textContent = 0;    
+      tomar.textContent = 0;
+      preparar.textContent = 0;
+      return 
+    } else {
+
+      errorMagnesio.textContent = "";
+    }
+
+    if(isNaN(peso) || peso <= 0) {
+      errorPeso.textContent = "Debe ingresar un peso válido";
+      meqdosis.textContent = 0;
+      tomar.textContent = 0;
+      preparar.textContent = 0;
+      return 
+    } else {
+      errorPeso.textContent = "";
+    }
+
+    const meqDosisValor =   peso * valor;
+    meqdosis.textContent = `${meqDosisValor} meq/dosis`;
+
+    const tomarMedicacion = meqDosisValor / 2; 
+    tomar.textContent = `${tomarMedicacion} ML de la ampolla al 25%`;
+      
+    const prepararMedicacion = (2 * tomarMedicacion) / 0.5;
+    preparar.textContent = `${prepararMedicacion} ml con`;
+
+    const administrarMedicacion = prepararMedicacion / 4;
+    administrar.textContent = `${administrarMedicacion} ml/hs - no superar 1 meq/kg/hs`;
+  });
+      
 </script>

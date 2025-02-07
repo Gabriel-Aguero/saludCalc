@@ -1,0 +1,39 @@
+---
+import ArrowDown from "@src/icons/ArrowDown.astro";
+---
+
+<nav class="w-64 bg-gray-800 text-white p-4 min-h-screen shadow-md">
+    <ul class="space-y-4">
+      <li><a href="/" class="block p-2 hover:bg-gray-700 rounded">Inicio</a></li>
+
+      <li>        
+        <a id="nav-electrolitos" href="/electrolitos" class="block p-2 hover:bg-gray-700 rounded">Electrolitos
+            <span id="arrow" class="ml-2">&#9660;</span> <!-- Flecha hacia abajo -->        
+        </a>
+        
+        <ul id="nav-electrolitos-submenu" class="hidden ml-4 space-y-2">
+          <li><a href="/electrolitos" class="block p-2 hover:bg-gray-700 rounded">Magnesio</a></li>
+          <li><a href="/electrolitos" class="block p-2 hover:bg-gray-700 rounded">Fosforo</a></li>
+        </ul>
+      </li>
+      <li><a href="/fosforo" class="block p-2 hover:bg-gray-700 rounded">Heparina</a></li>
+    </ul>
+  </nav>
+ 
+  <script>
+    const navElectrolitos = document.getElementById("nav-electrolitos");
+    const navElectrolitosSubmenu = document.getElementById("nav-electrolitos-submenu");
+    const arrow = document.getElementById("arrow");
+
+    navElectrolitos?.addEventListener("click", (e) => {
+      e.preventDefault();
+      navElectrolitosSubmenu?.classList.toggle("hidden");
+
+      if (navElectrolitosSubmenu?.classList.contains("hidden")) {
+      arrow.innerHTML = "&#9660;"; // Flecha hacia abajo ▼
+    } else {
+      arrow.innerHTML = "&#9650;"; // Flecha hacia arriba ▲
+    }
+    });
+    
+  </script>
