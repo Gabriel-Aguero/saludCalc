@@ -4,11 +4,12 @@ import Layout from "@src/layouts/Layout.astro";
 
 <Layout title="Calculadora de Dosis">
   <section class="flex flex-col gap-10">
-    <div class="flex-1">
+ 
+    <div class="flex flex-col p-4 mt-10 md:flex-row gap-4">
       <button
         id="btn-magnesio"
-        class="px-10 py-2 bg-gray-400 rounded-md font-medium text-slate-950
-         hover:bg-gray-600 hover:text-white hover:transition-all
+        class="px-10 py-2 border-2 border-gray-400 rounded-md font-medium text-slate-950
+         hover:bg-gray-800 hover:text-white hover:transition-all
            hover:ease-in-out hvoer:duration-1000 cursor-pointer"
       >
         Correcciones de magnesio
@@ -16,8 +17,8 @@ import Layout from "@src/layouts/Layout.astro";
   
       <button
         id="btn-fosforo"
-        class="px-10 py-2 bg-gray-400 rounded-md font-medium text-slate-950
-      hover:bg-gray-600 hover:text-white hover:transition-all
+        class="px-10 py-2 border-2 border-gray-400 rounded-md font-medium text-slate-950
+      hover:bg-gray-800 hover:text-white hover:transition-all
       hover:ease-in-out hvoer:duration-1000 cursor-pointer"
       >
         Correcciones de Fosforo
@@ -25,15 +26,25 @@ import Layout from "@src/layouts/Layout.astro";
     </div>
 
     <article id ="magnesio-content" class="hidden">
-      <h2>Correcciones de Magnesio</h2>
+      <h2 class="text-center text-2xl md:text-3xl font-semibold mb-4">Correcciones de Magnesio</h2>
       <form action="">        
-        <div class="grid gird-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-2">
+          
+          <div class="flex flex-col gap-2 p-2 mb-8 border-2 rounded-xl border-red-400 md:col-span-3">
+            <div class="flex items-center  justify-between gap-2">
+              <h2 class="text-xl text-red-700 font-bold">Dosis Pediátrica Permitida</h2>
+              <p class="text-3xl">⚠️</p>
+            </div>
+            <span class="text-md font-medium text-gray-00 text-balance">Ampolla 25% de sulfato de magnesio = 2 meq de magnesio/ ml
+            concentración de administración: 0,5 meq de magnesio/ ml            
+            </span>            
+          </div>
 
-          <div class="flex flex-col gap-2 mt-4">
+          <div class="flex flex-col gap-2">
             <label 
               class="text-gray-400 font-medium"
               for="peso">
-              Peso
+              Peso....Kg
             </label>
             <div class="flex flex-col gap-1">
               <input 
@@ -45,20 +56,10 @@ import Layout from "@src/layouts/Layout.astro";
                 required           
                 >
                 <span class="error text-red-500" id="error-message-peso"></span>
-                <span class="px-2 text-gray-700 text-md">Kg</span>
+                
             </div>
           </div>                    
-
-          <div class="flex flex-col gap-2 mt-2 border-2 rounded-xl border-red-400 p-4">
-            <div class="flex items-center  justify-between gap-2">
-              <h2 class="text-xl text-red-700 font-bold">Dosis Pediátrica Permitida</h2>
-              <p class="text-3xl">⚠️</p>
-            </div>
-            <span class="text-md font-medium text-gray-00 text-pretty">Ampolla 25% de sulfato de magnesio = 2 meq de magnesio/ ml
-            concentración de administración: 0,5 meq de magnesio/ ml            
-            </span>            
-          </div> 
-
+          
           <div class="flex flex-col gap-2">            
             <label 
               class="text-gray-500 font-semibold"
@@ -74,7 +75,7 @@ import Layout from "@src/layouts/Layout.astro";
               required     
               min="1"    
               >                                                    
-            <span class="error" id="error-message-magnesio"></span>
+            <span class="error text-red-600 font-bold" id="error-message-magnesio"></span>
           </div>
 
           <div class="flex flex-col gap-2 justify-center">
@@ -95,11 +96,11 @@ import Layout from "@src/layouts/Layout.astro";
             </p>
           </div>
 
-          <div class="col-span-2 mt-10 flex flex-col gap-2">
+          <div class="mt-10 flex flex-col items-center justify-center gap-2 md:col-span-3">
             <h3 class="text-xl text-gray-800 font-medium">
-              <span class="border-b-2 p-1 border-gray-300">Indicaciones Medicas de Sulfato de Magnesio</span>              
+              <span class="p-1 text-center">Indicaciones Medicas de Sulfato de Magnesio</span>              
             </h3>             
-            <p class="mt-4 text-md border-2 border-red-400 rounded-md p-2">⚠️ Incompatible con calcio, bicarbonato, Incompatible con fosfatos excepto en soluciones diluidas</p>           
+            <p class="mt-4 text-md font-medium border-2 border-red-400 rounded-md p-2">⚠️ Incompatible con calcio, bicarbonato, Incompatible con fosfatos excepto en soluciones diluidas</p>           
           </div>
           
           <div class="mt-4 flex flex-col gap-2">
@@ -111,32 +112,32 @@ import Layout from "@src/layouts/Layout.astro";
             <span class="border-2 border-gray-400 p-2 rounded-md" id="tomar">0</span>                        
             </label>            
           </div>
-          
-          <div class="flex gap-4">
-            <div class="mt-4 flex flex-col gap-2">                          
-                <label 
-                  class="text-gray-500 font-semibold"
-                  >
-                  Llevar a: .... ml
-                </label>              
-                <span class="border-2 border-gray-400 p-2 rounded-md" id="preparar">0</span>                                
-              </div>
-              <div class="mt-4 flex flex-col gap-2">                          
-                <label 
-                  class="text-gray-500 font-semibold px-2"
-                  >
-                  Preparar con...
-                </label>
-                <select class="border-2 border-gray-400 p-2 rounded-md" id="opcion">
-                  <option value="0" disabled selected>Seleccione una opción</option>
-                  <option value="1">Dextrosa al 5%</option>
-                  <option value="2">Solución fisiológica</option>                  
-                </select>              
-
-              </div>
+                    
+          <div class="mt-4 flex flex-col gap-2">                          
+            <label 
+              class="text-gray-500 font-semibold"
+              >
+              Llevar a: .... ml
+            </label>              
+            <span class="border-2 border-gray-400 p-2 rounded-md" id="preparar">0</span>                                
+          </div>
+           
+            
+          <div class="mt-4 flex flex-col gap-2">                          
+            <label 
+              class="text-gray-500 font-semibold px-2"
+              >
+              Preparar con...
+            </label>
+            <select class="border-2 border-gray-400 p-2 rounded-md" id="opcion">
+              <option value="0" disabled selected>Seleccione una opción</option>
+              <option value="1">Dextrosa al 5%</option>
+              <option value="2">Solución fisiológica</option>                  
+            </select>              
           </div>
 
-          <div class="col-span-2 mt-4 flex flex-col gap-2 border-2 rounded-xl border-red-400 p-4">
+
+          <div class="mt-4 flex flex-col gap-2 border-2 rounded-xl border-red-400 p-4 md:col-span-3">
             <h4 
               class="text-gray-600 text-2xl font-bold"
               >
@@ -146,7 +147,6 @@ import Layout from "@src/layouts/Layout.astro";
              class="py-2 text-2xl text-gray-950 fotn-bold"
              id="administrar">0</p>            
           </div>
-
 
         </div>
       </form>      
@@ -196,8 +196,8 @@ import Layout from "@src/layouts/Layout.astro";
     const valor = parseFloat(inputMagnesio?.value);
     const peso = parseFloat(inputPeso?.value);
     
-    if(isNaN(valor) || peso <= 0) {
-      errorPeso.textContent = "Debe ingresar un peso";
+    if(isNaN(valor) || valor > 16) {      
+      errorMagnesio.textContent = "Dosis max. permitida: 16 meq/kg";
       meqdosis.textContent = 0;    
       tomar.textContent = 0;
       preparar.textContent = 0;

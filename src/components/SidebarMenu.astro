@@ -2,38 +2,81 @@
 import ArrowDown from "@src/icons/ArrowDown.astro";
 ---
 
-<nav class="w-64 bg-gray-800 text-white p-4 min-h-screen shadow-md">
-    <ul class="space-y-4">
-      <li><a href="/" class="block p-2 hover:bg-gray-700 rounded">Inicio</a></li>
 
-      <li>        
-        <a id="nav-electrolitos" href="/electrolitos" class="block p-2 hover:bg-gray-700 rounded">Electrolitos
-            <span id="arrow" class="ml-2">&#9660;</span> <!-- Flecha hacia abajo -->        
-        </a>
-        
-        <ul id="nav-electrolitos-submenu" class="hidden ml-4 space-y-2">
-          <li><a href="/electrolitos" class="block p-2 hover:bg-gray-700 rounded">Magnesio</a></li>
-          <li><a href="/electrolitos" class="block p-2 hover:bg-gray-700 rounded">Fosforo</a></li>
-        </ul>
-      </li>
-      <li><a href="/fosforo" class="block p-2 hover:bg-gray-700 rounded">Heparina</a></li>
-    </ul>
-  </nav>
+
+<nav class="bg-white border-gray-200 dark:bg-gray-800">
+  <div class="flex flex-wrap items-center justify-center mx-auto p-4">
+  <!-- <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
+      <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+  </a> -->
+    <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">        
+        <button id="btn-navbar-cta" data-collapse-toggle="navbar-cta" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-cta" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+          </svg>
+      </button>
+    </div>
+    <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
+      <ul class="flex flex-col font-medium p-4 md:p-2 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-800 dark:border-gray-700">
+        <li>
+          <a href="#" class="block py-2 px-3 md:p-0 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:dark:text-blue-500" aria-current="page">Drogas Cardiovasculares</a>
+        </li>
+        <li>
+          <a id="btn-electrolitos" href="/electrolitos" class="block py-2 px-3 md:p-0 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Electrolitos</a>
+          <!-- <ul id="subMenu-electrolitos" class="z-10 hidden">
+            <li>
+              <a href="#" class="block py-2 px-3 md:p-0 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Magnesio</a>
+            </li>
+            <li>
+              <a href="#" class="block py-2 px-3 md:p-0 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Fosforo</a>
+            </li>
+          </ul>  -->
+        </li>
+        <li>
+          <a href="#" class="block py-2 px-3 md:p-0 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Heparina</a>
+        </li>
+        <li>
+          <a href="#" class="block py-2 px-3 md:p-0 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">SedoAnalgesia</a>
+        </li>
+        <li>
+          <a href="#" class="block py-2 px-3 md:p-0 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Octreotide</a>
+        </li>
+        <li>
+          <a href="#" class="block py-2 px-3 md:p-0 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Insulina</a>
+        </li>
+        <li>
+          <a href="#" class="block py-2 px-3 md:p-0 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Guias Intereactivas</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
  
   <script>
-    const navElectrolitos = document.getElementById("nav-electrolitos");
-    const navElectrolitosSubmenu = document.getElementById("nav-electrolitos-submenu");
-    const arrow = document.getElementById("arrow");
+    // const navElectrolitos = document.getElementById("nav-electrolitos");
+    // const navElectrolitosSubmenu = document.getElementById("nav-electrolitos-submenu");
+    // const arrow = document.getElementById("arrow");
+    const menuResponsive = document.getElementById("navbar-cta");
+    const btnMenu = document.getElementById("btn-navbar-cta");
+    // const btnElectrolito = document.getElementById("btn-electrolitos");
+    // const btnSubMenuElectrolito = document.getElementById("subMenu-electrolitos");
 
-    navElectrolitos?.addEventListener("click", (e) => {
+
+    btnMenu?.addEventListener("click", (e) => {
       e.preventDefault();
-      navElectrolitosSubmenu?.classList.toggle("hidden");
+      menuResponsive?.classList.toggle("hidden");      
 
-      if (navElectrolitosSubmenu?.classList.contains("hidden")) {
-      arrow.innerHTML = "&#9660;"; // Flecha hacia abajo ▼
-    } else {
-      arrow.innerHTML = "&#9650;"; // Flecha hacia arriba ▲
-    }
-    });
+      if (menuResponsive?.classList.contains("hidden")) {
+        btnMenu?.setAttribute("aria-expanded", "true");
+        btnMenu?.setAttribute("aria-label", "Cerrar menú");        
+        
+      } else {
+        btnMenu?.setAttribute("aria-expanded", "false");
+        btnMenu?.setAttribute("aria-label", "Abrir menú");                
+      }
+    });    
     
   </script>
