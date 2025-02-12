@@ -1,178 +1,183 @@
+---
+const { vieFosforo } = Astro.props;
+---
 
-
-    <article id="fosforo-content" class="hidden">
-      <h2 class="mx-4 text-2xl md:text-3xl font-semibold mb-4">Correcciones de Fosforo</h2>
-      <div class="flex flex-col p-4 mt-10 md:flex-row gap-4">
-        <button
-          id="btn-magnesio"
-          class="px-10 py-2 border-2 border-gray-400 rounded-md font-medium text-slate-950
+<article id={vieFosforo} class="hidden">
+  <h2 class="m-6 text-2xl md:text-3xl font-semibold">
+    Correcciones de Fosforo
+  </h2>
+  <div class="flex flex-col p-4 mt-10 md:flex-row gap-4">
+    <button
+      id="btn-magnesio"
+      class="px-10 py-2 border-2 border-gray-400 rounded-md font-medium text-slate-950
            hover:bg-gray-800 hover:text-white hover:transition-all
              hover:ease-in-out hvoer:duration-1000 cursor-pointer"
-        >
-          Vía Central
-        </button>
-    
-        <button
-          id="btn-fosforo"
-          class="px-10 py-2 border-2 border-gray-400 rounded-md font-medium text-slate-950
+    >
+      Vía Central
+    </button>
+
+    <button
+      id="btn-fosforo"
+      class="px-10 py-2 border-2 border-gray-400 rounded-md font-medium text-slate-950
         hover:bg-gray-800 hover:text-white hover:transition-all
         hover:ease-in-out hvoer:duration-1000 cursor-pointer"
-        >
-          Vía Periférica
-        </button>
-      </div>
-      <form action="">        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-2">
-          
-          <div class="flex flex-col gap-2 p-2 mb-8 border-2 rounded-xl border-red-400 md:col-span-3">
-            <div class="flex items-center  justify-between gap-2">
-              <h2 class="text-xl text-red-700 font-bold">Dosis Pediátrica Permitida</h2>
-              <p class="text-3xl">⚠️</p>
-            </div>
-            <span class="text-md font-medium text-gray-00 text-balance">Ampolla 93mg = 3 mmol de fosforo/ ml
-            concentración de administración: 0,04 mmol de fosforo/ ml            
-            </span>            
-          </div>
-
-          <div class="flex flex-col gap-2">
-            <label 
-              class="text-gray-400 font-medium"
-              for="pesoFosforo">
-              Peso....Kg
-            </label>
-            <div class="flex flex-col gap-1">
-              <input 
-                class="rounded-md border-2 border-gray-400 p-2"
-                type="number" 
-                id="pesoFosforo" 
-                name="pesoFosforo" 
-                placeholder="Ingreso el peso del paciente" 
-                required           
-                >
-                <span class="error text-red-500" id="error-message-peso-fosforo"></span>
-                
-            </div>
-          </div>                    
-          
-          <div class="flex flex-col gap-2">            
-            <label 
-              class="text-gray-500 font-semibold"
-              for="correccionFosforo">
-              Correccion a .... mg/kg
-            </label>            
-            <input 
-              class="rounded-md border-2 border-gray-400 p-2"
-              type="number" 
-              id="correccionFosforo" 
-              name="correccionFosforo" 
-              placeholder="Ingrese un valor"  
-              required     
-              min="1"    
-              >                                                    
-            <span class="error text-red-600 font-bold" id="error-message-fosforo"></span>
-          </div>         
-
-          <div class="mt-10 flex flex-col items-center justify-center gap-2 md:col-span-3">
-            <h3 class="text-xl text-gray-800 font-medium">
-              <span class="p-1 text-center">Indicaciones Medicas de Sulfato de Magnesio</span>              
-            </h3>             
-            <p class="mt-4 text-md font-medium border-2 border-red-400 rounded-md p-2">⚠️ Incompatible con calcio.
-               Incompatible con magnesio excepto en soluciones diluidas</p>           
-          </div>
-          
-          <div class="mt-4 flex flex-col gap-2">
-            <label 
-              for="tomarFosforo"
-              class="text-gray-400 font-medium"
-              >
-              Tomar: 
-            </label>            
-            <span id="tomarFosforo" class="border-2 border-gray-400 p-2 rounded-md">0</span>                        
-            </label>            
-          </div>
-                    
-          <div class="mt-4 flex flex-col gap-2">                          
-            <label 
-              for="llevarFosforo"
-              class="text-gray-500 font-semibold"
-              >
-              Llevar a: .... ml
-            </label>              
-            <span class="border-2 border-gray-400 p-2 rounded-md" id="llevarFosforo">0</span>                                
-          </div>
-                       
-          <div class="mt-4 flex flex-col gap-2">                          
-            <label 
-              class="text-gray-500 font-semibold px-2"
-              >
-              Preparar con...
-            </label>
-            <select class="border-2 border-gray-400 p-2 rounded-md" id="opcion">
-              <option value="0" disabled selected>Seleccione una opción</option>
-              <option value="1">Dextrosa al 5%</option>
-              <option value="2">Solución fisiológica</option>                  
-            </select>              
-          </div>
-
-          <div class="mt-4 flex flex-col gap-2 border-2 rounded-xl border-red-400 p-4 md:col-span-3">
-            <h4 
-              class="text-gray-600 text-2xl font-bold"
-              >
-              Administar: 💉​
-            </h4>            
-            <p
-             class="py-2 text-2xl text-gray-950 fotn-bold"
-             id="administrarFosforo">0</p>            
-          </div>
-
+    >
+      Vía Periférica
+    </button>
+  </div>
+  <form action="">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-2">
+      <div
+        class="flex flex-col gap-2 p-2 mb-8 border-2 rounded-xl border-red-400 md:col-span-3"
+      >
+        <div class="flex items-center justify-between gap-2">
+          <h2 class="text-xl text-red-700 font-bold">
+            Dosis Pediátrica Permitida
+          </h2>
+          <p class="text-3xl">⚠️</p>
         </div>
-      </form>      
-    </article>
-  
+        <span class="text-md font-medium text-gray-00 text-balance"
+          >Ampolla 93mg = 3 mmol de fosforo/ ml concentración de administración:
+          0,04 mmol de fosforo/ ml
+        </span>
+      </div>
 
+      <div class="flex flex-col gap-2">
+        <label class="text-gray-400 font-medium" for="pesoFosforo">
+          Peso....Kg
+        </label>
+        <div class="flex flex-col gap-1">
+          <input
+            class="rounded-md border-2 border-gray-400 p-2"
+            type="number"
+            id="pesoFosforo"
+            name="pesoFosforo"
+            placeholder="Ingreso el peso del paciente"
+            min="1"
+            required
+          />
+          <span class="error text-red-500" id="error-message-peso-fosforo"
+          ></span>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label class="text-gray-500 font-semibold" for="correccionFosforo">
+          Correccion a .... mg/kg
+        </label>
+        <input
+          class="rounded-md border-2 border-gray-400 p-2"
+          type="number"
+          id="correccionFosforo"
+          name="correccionFosforo"
+          placeholder="Ingrese un valor"
+          required
+          min="1"
+        />
+        <span class="error text-red-600 font-bold" id="error-message-fosforo"
+        ></span>
+      </div>
+
+      <div
+        class="mt-10 flex flex-col items-center justify-center gap-2 md:col-span-3"
+      >
+        <h3 class="text-xl text-gray-800 font-medium">
+          <span class="p-1 text-center"
+            >Indicaciones Medicas de Sulfato de Magnesio</span
+          >
+        </h3>
+        <p
+          class="mt-4 text-md font-medium border-2 border-red-400 rounded-md p-2"
+        >
+          ⚠️ Incompatible con calcio. Incompatible con magnesio excepto en
+          soluciones diluidas
+        </p>
+      </div>
+
+      <div class="mt-4 flex flex-col gap-2">
+        <label for="tomarfosforo" class="text-gray-400 font-medium"
+          >Tomar:
+        </label>
+        <span id="tomarFosforo" class="border-2 border-gray-400 p-2 rounded-md"
+          >0</span
+        >
+      </div>
+
+      <div class="mt-4 flex flex-col gap-2">
+        <label for="llevarFosforo" class="text-gray-500 font-semibold">
+          Llevar a: .... ml
+        </label>
+        <span class="border-2 border-gray-400 p-2 rounded-md" id="llevarFosforo"
+          >0</span
+        >
+      </div>
+
+      <div class="mt-4 flex flex-col gap-2">
+        <label class="text-gray-500 font-semibold px-2">
+          Preparar con...
+        </label>
+        <select class="border-2 border-gray-400 p-2 rounded-md" id="opcion">
+          <option value="0" disabled selected>Seleccione una opción</option>
+          <option value="1">Dextrosa al 5%</option>
+          <option value="2">Solución fisiológica</option>
+        </select>
+      </div>
+    </div>
+
+    <div
+      class="mt-4 flex flex-col gap-2 border-2 rounded-xl border-red-400 p-4 md:col-span-3"
+    >
+      <h4 class="text-gray-600 text-2xl font-bold">Administar: 💉​</h4>
+      <p class="py-2 text-2xl text-gray-950 fotn-bold" id="administrarFosforo">
+        0
+      </p>
+    </div>
+  </form>
+</article>
 
 <script>
-  
-  const btnMagnesio = document.getElementById("btn-magnesio")!;
-  const btnFosforo = document.getElementById("btn-fosforo")!;
-  
-  const inputFosforo = document.getElementById("correccionesFosforo"); // type number
+  const inputFosforo = document.getElementById("correccionFosforo"); // type number
   const inputPesoFosforo = document.getElementById("pesoFosforo"); // type number
-  const tomarFosforo = document.getElementById("tomarFosforo");  // type text
+  const tomarFosforo = document.getElementById("tomarFosforo"); // type text
   const llevarFosforo = document.getElementById("llevarFosforo"); // type text
-  const inputAdministrarFosforo = document.getElementById("administrarFosforo");  // type text
-  const error_peso_fosforo = document.getElementById("error-message-peso-fosforo"); // type text
+  const inputAdministrarFosforo = document.getElementById("administrarFosforo"); // type text
+  const error_peso_fosforo = document.getElementById(
+    "error-message-peso-fosforo"
+  ); // type text
   const errorFosforo = document.getElementById("error-message-fosforo"); // type text
-  
 
   inputFosforo?.addEventListener("input", () => {
-    const valor = parseFloat(inputFosforo?.value);
-    const peso =  parseFloat(inputPesoFosforo?.value);
+    const valor = inputFosforo?.value;
+    const peso = inputPesoFosforo?.value;
 
-    // validacion de dosis de correccion 
-    // if(isNaN(valor) || valor > 20) {      
-    //   errorFosforo.textContent = "Dosis max. permitida: 20 mg/kg";      
-    //   tomarFosforo?.textContent = "0";
-    //   llevarFosforo?.textContent = "0";
-      
-    //   return 
-    // } else {
-    //   errorFosforo?.textContent = "";
-    // }
+    // validacion de dosis de correccion
+    if (isNaN(valor)) {
+      errorFosforo.textContent = "Dosis max. permitida: 20 mg/kg";
+      tomarFosforo.textContent = "0";
+      llevarFosforo.textContent = "0";
 
-    // // validacion de peso
-    // if(isNaN(peso) || peso <= 0){      
-    //   error_peso_fosforo?.textContent = "Debe ingresar un peso válido";
-    //   tomarFosforo?.textContent = "0";
-    //   llevarFosforo?.textContent = "0";
-    //   return;
-    // } else {
-    //   error_peso_fosforo?.textContent = "";
-    // }
+      return;
+    } else {
+      errorFosforo.textContent = "";
+    }
 
-    // const tomar = valor * peso / 93
-    // tomar.textContent = tomar;      
-   
+    // validacion de peso
+    if (isNaN(peso) || peso <= 0) {
+      error_peso_fosforo.textContent = "Debe ingresar un peso válido";
+      tomarFosforo.textContent = "0";
+      llevarFosforo.textContent = "0";
+      return;
+    } else {
+      error_peso_fosforo.textContent = "";
+    }
+
+    const valorfosforo = (valor * peso) / 93;
+    tomarFosforo.textContent = `${valorfosforo.toFixed(2)}`;
+
+    const tomar = valorfosforo / 2;
+    tomarFosforo.textContent = `${tomar.toFixed(2)}`;
+
+    const llevar = tomar / 0.5;
+    llevarFosforo.textContent = `${llevar.toFixed(2)}`;
   });
-
 </script>
