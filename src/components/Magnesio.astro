@@ -25,7 +25,7 @@ const { vieMagnesio } = Astro.props;
       </div>
 
       <div class="flex flex-col gap-2">
-        <label class="text-gray-400 font-medium" for="peso"> Peso....Kg </label>
+        <label class="text-gray-400 font-medium required" for="peso"> Peso....Kg </label>
         <div class="flex flex-col gap-1">
           <input
             class="rounded-md border-2 border-gray-400 p-2"
@@ -41,12 +41,12 @@ const { vieMagnesio } = Astro.props;
       </div>
 
       <div class="flex flex-col gap-2">
-        <label class="text-gray-500 font-semibold" for="correccionMagnesio">
+        <label class="text-gray-500 font-semibold required" for="correccionMagnesio">
           Correccion a .... meq/kg
         </label>
         <input
-          class="rounded-md border-2 border-gray-400 p-2"
           type="number"
+          class="rounded-md border-2 border-gray-400 p-2"          
           id="correccionMagnesio"
           name="correccionMagnesio"
           placeholder="Ingrese un valor"
@@ -55,15 +55,23 @@ const { vieMagnesio } = Astro.props;
         />
         <span class="error text-red-600 font-bold" id="error-message-magnesio"
         ></span>
-      </div>
+      </div>      
 
-      <div class="flex flex-col gap-2 justify-center">
-        <label class="text-gray-500 font-semibold" for="correccionMagnesio">
+      <div class="flex flex-col gap-2 py-3">
+        <label class="text-gray-500 font-semibold" for="meqDosis">
           Corresponde a .... meq/dosis
         </label>
-        <label class="py-2 border-2 border-gray-300 rounded-md" for="meqDosis">
+        <input
+        readonly
+        class="rounded-md border-2 border-gray-400 p-2"
+        
+        id="meqDosis"
+        name="meqDosis"
+        placeholder="0"                
+      />
+        <!-- <label class="py-2 border-2 border-gray-300 rounded-md" for="meqDosis">
           <span class="text-gray-600 font-medium px-4" id="meqDosis">0</span>
-        </label>
+        </label> -->
       </div>
 
       <div
@@ -83,75 +91,134 @@ const { vieMagnesio } = Astro.props;
       </div>
 
       <div class="mt-4 flex flex-col gap-2">
-        <label class="text-gray-400 font-medium"> Tomar: </label>
-        <span class="border-2 border-gray-400 p-2 rounded-md" id="tomar">0</span
-        >
+        <label class="text-gray-400 font-medium"> Tomar: ... ML de la ampolla al 25% </label>
+        <input readonly class="border-2 border-gray-400 p-2 rounded-md" id="tomar" name="tomar" placeholder="0">
+        <!-- <span class="border-2 border-gray-400 p-2 rounded-md" id="tomar">0</span> -->        
       </div>
     
       <div class="mt-4 flex flex-col gap-2">
-        <label class="text-gray-500 font-semibold"> Llevar a: .... ml </label>
-        <span class="border-2 border-gray-400 p-2 rounded-md" id="preparar"
-          >0</span
-        >
+        <label class="text-gray-500 font-semibold" for="preparar"> Llevar a: .... ml </label>
+        <input readonly class="border-2 border-gray-400 p-2 rounded-md" id="preparar" name="preparar" placeholder="0">
+        <!-- <span class="border-2 border-gray-400 p-2 rounded-md" id="preparar">0</span> -->
       </div>
     
       <div class="mt-4 flex flex-col gap-2">
         <label class="text-gray-500 font-semibold px-2">
           Preparar con...
         </label>
-        <select class="border-2 border-gray-400 p-2 rounded-md" id="opcion">
+        <select class="border-2 border-gray-400 p-2 rounded-md" id="dilucion">
           <option value="0" disabled selected>Seleccione una opción</option>
-          <option value="1">Dextrosa al 5%</option>
-          <option value="2">Solución fisiológica</option>
+          <option value="Dextrosa al 5%">Dextrosa al 5%</option>
+          <option value="Solución fisiológica">Solución fisiológica</option>
         </select>
       </div>
 
-      <div
-        class="mt-4 flex flex-col gap-2 border-2 rounded-xl border-red-400 p-4 md:col-span-3"
+      <div class="flex flex-col gap-2 py-3 md:col-span-3">
+        <button
+        id="guardarMagnesio"
+        type="submit"
+        class="px-30 py-2 border-2 border-gray-900 text-white bg-gray-800 rounded-md font-medium
+          hover:bg-gray-900 hover:text-white hover:transition-all
+            hover:ease-in-out hvoer:duration-1000 cursor-pointer"
       >
-        <h4 class="text-gray-600 text-2xl font-bold">Administar: 💉​</h4>
-        <p class="py-2 text-2xl text-gray-950 fotn-bold" id="administrar">0</p>
+        Calcular
+        </button>      
       </div>
+                   
+      <div
+      class="mt-4 flex flex-col max-h-40 gap-2 border-2 rounded-xl border-red-400 p-4"
+      >
+      <h4 class="text-gray-600 text-2xl font-bold">Administar: 💉 - no superar 1 meq/kg/hs​</h4>
+        <p class="py-2 text-2xl text-gray-950 fotn-bold" id="administrar">0</p>
+      </div>  
 
-      <button
-      type="submit"
-      class="px-10 py-2 border-2 border-gray-400 rounded-md font-medium text-slate-950
-       hover:bg-gray-800 hover:text-white hover:transition-all
-         hover:ease-in-out hvoer:duration-1000 cursor-pointer"
+      <div
+      class="max-w-sm mt-4 flex flex-col mx-auto md:mx-0 gap-2 border-2 rounded-xl border-red-400 p-4 md:col-span-2"
     >
-      Guardar
-    </button>
+      <h4 class="text-gray-600 text-center text-2xl font-bold">Rotulo para la Preparación​</h4>
+      <p class="py-2 text-2xl text-gray-950 fotn-bold" id="administrar">SULFATO DE MAGNESIO</p>
+    
+      <input type="text" id="namePaciente" name="namePaciente" 
+      placeholder="Nombre del paciente" class="w-full text-center rounded-lg border-2 border-gray-300 
+      p-2 text-gray-950 focus:border-red-400 focus:outline-none focus:ring-1 focus:ring-red-400">
+    
+      <input type="text" id="hcPaciente" name="hcPaciente" 
+      placeholder="Hisotria Clínica del paciente" class="w-full text-center rounded-lg border-2 border-gray-300 
+      p-2 text-gray-950 focus:border-red-400 focus:outline-none focus:ring-1 focus:ring-red-400">
+      
+      <div class="flex flex-col gap-2 border-2 border-gray-300 p-4 rounded-lg">
+        <div class="flex justify-between md:mr-20">
+          <p>Peso</p>
+          <p id="pesoRotulo">0</p>
+        </div>
+        <div class="flex justify-between md:mr-20">
+          <p>Magnesio, Sulfato 25%</p>
+          <p id="tomarRotulo">0</p>
+        </div>
+        <div class="flex justify-between md:mr-10">
+          <div class="flex gap-2">
+            <p>Dilución</p>
+            <p id="dilucionRotulo">--</p>          
+          </div>
+          <div class="flex gap-2">
+            <p>Hasta</p>
+            <p id="llevarRotulo">0</p>
+          </div>
+        </div>
+        <div class="flex justify-between md:mr-20">
+          <p>Administrar a: </p>
+          <p id="administrarRotulo">0</p>
+        </div>
+      </div>
+            
+      </div>    
     </div>
-
-
   </form>
 </article>
 
 <script>
+
+  const guardarDatos = document.getElementById("guardarMagnesio")!;
   const inputPeso = document.getElementById("peso")!;
   const magnesioContent = document.getElementById("magnesio-content")!;
-  const fosforoContent = document.getElementById("fosforo-content")!;
-  // const btnMagnesio = document.getElementById("btn-magnesio")!;
-  // const btnFosforo = document.getElementById("btn-fosforo")!;
-  const meqdosis = document.getElementById("meqDosis")!;
+  // const fosforoContent = document.getElementById("fosforo-content")!;  
+  const meqdosis = document.getElementById("meqDosis") as HTMLInputElement;
   const inputMagnesio = document.getElementById("correccionMagnesio")!;
   const errorPeso = document.getElementById("error-message-peso")!;
   const errorMagnesio = document.getElementById("error-message-magnesio")!;
   const tomar = document.getElementById("tomar")!;
   const preparar = document.getElementById("preparar")!;
   const administrar = document.getElementById("administrar")!;
+  const selectDilucion = document.getElementById("dilucion")!;
+
+  const pesoRotulo = document.getElementById("pesoRotulo")!;
+  const tomarRotulo = document.getElementById("tomarRotulo")!;
+  const llevarRotulo = document.getElementById("llevarRotulo")!;
+  const administrarRotulo = document.getElementById("administrarRotulo")!;
+  const dilucionRotulo = document.getElementById("dilucionRotulo")!;
+
+  
 
   magnesioContent?.classList.remove("hidden");
 
-  inputMagnesio?.addEventListener("input", () => {
-    const valor = inputMagnesio?.value;
-    const peso = inputPeso?.value;
+  selectDilucion.addEventListener("change", (e) => {
+      e.preventDefault();      
+      dilucionRotulo.textContent = `${selectDilucion.value}`;
+  });
+  
+  guardarDatos.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const valor = inputMagnesio.value;
+    const peso = inputPeso.value;    
+
+    
 
     if (isNaN(valor) || valor > 16) {
       errorMagnesio.textContent = "Dosis max. permitida: 16 meq/kg";
-      meqdosis.textContent = "0";
-      tomar.textContent = "0";
-      preparar.textContent = "0";
+      meqdosis.value = 0;
+      tomar.value = 0;
+      preparar.value = 0;
       return;
     } else {
       errorMagnesio.textContent = "";
@@ -159,24 +226,41 @@ const { vieMagnesio } = Astro.props;
 
     if (isNaN(peso) || peso <= 0) {
       errorPeso.textContent = "Debe ingresar un peso válido";
-      meqdosis.textContent = "0";
-      tomar.textContent = "0";
-      preparar.textContent = "0";
+      meqdosis.value = 0;
+      tomar.value = 0;
+      preparar.value = 0;
       return;
     } else {
       errorPeso.textContent = "";
     }
 
     const meqDosisValor = peso * valor;
-    meqdosis.textContent = `${meqDosisValor} meq/dosis`;
+    meqdosis.value = `${meqDosisValor} meq/dosis`;
 
     const tomarMedicacion = meqDosisValor / 2;
-    tomar.textContent = `${tomarMedicacion} ML de la ampolla al 25%`;
+    tomar.value = `${tomarMedicacion.toFixed(1)}`;
 
     const prepararMedicacion = (2 * tomarMedicacion) / 0.5;
-    preparar.textContent = `${prepararMedicacion} ml con`;
+    preparar.value = `${prepararMedicacion.toFixed(0)}`;
 
     const administrarMedicacion = prepararMedicacion / 4;
-    administrar.textContent = `${administrarMedicacion} ml/hs - no superar 1 meq/kg/hs`;
+    administrar.textContent = `${administrarMedicacion.toFixed(1)} ml/hs - `;
+    
+    pesoRotulo.textContent = `${peso} kg`;
+    tomarRotulo.textContent = tomar.value;
+    llevarRotulo.textContent = `${preparar.value} ml`;
+    const administrarEnRotulo = `${preparar.value}`/4 ;
+    administrarRotulo.textContent = `${administrarEnRotulo.toFixed(1)} ml/hs`;
   });
+  
 </script>
+
+<style>
+  .required::after{
+    content: "*";
+    color: red;
+    font-size: 1.5rem;
+    margin: 0.5rem;
+    font-weight: bold;    
+  }
+</style>
